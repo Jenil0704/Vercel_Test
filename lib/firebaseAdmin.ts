@@ -1,6 +1,7 @@
 // lib/firebaseAdmin.ts
 import { getApps, initializeApp, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
+import type { ServiceAccount } from "firebase-admin";
 
 const serviceAccount = {
   type: process.env.FB_TYPE,
@@ -16,7 +17,7 @@ const serviceAccount = {
 
 if (!getApps().length) {
   initializeApp({
-    credential: cert(serviceAccount as any),
+    credential: cert(serviceAccount as ServiceAccount),
   });
 }
 
